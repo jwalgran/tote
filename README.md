@@ -2,6 +2,8 @@
 
 A data model plugin for [PouchDB](http://pouchdb.com/).
 
+[![Build Status](https://travis-ci.org/jwalgran/tote.png)](https://travis-ci.org/jwalgran/tote)
+
 ## Getting Started
 
 ```
