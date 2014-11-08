@@ -1,0 +1,35 @@
+{
+  "name": "tote",
+  "version": "1.0.0",
+  "description": "A small data layer for PouchDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js",
+    "coverage": "covert test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jwalgran/tote"
+  },
+  "keywords": [
+    "pouchdb",
+    "database",
+    "model"
+  ],
+  "author": "Justin Walgran <justin@walgran.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jwalgran/tote/issues"
+  },
+  "homepage": "https://github.com/jwalgran/tote",
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "pouchdb": "^3.0.6",
+    "slug": "^0.8.0"
+  },
+  "devDependencies": {
+    "covert": "^1.0.1",
+    "pouchdb": "^3.0.6",
+    "tape": "^3.0.2"
+  }
+}
