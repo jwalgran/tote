@@ -37,7 +37,7 @@ db.band.save({ name: 'Melvins' }, function (err) {
 
 ## API
 
-``tote`` is a PouchDB [plug in](http://pouchdb.com/api.html#plugins). Installing it like so:
+``tote`` is a PouchDB [plug in](http://pouchdb.com/api.html#plugins). Install it like so:
 
 ```
 var PouchDB = require('pouchdb');
