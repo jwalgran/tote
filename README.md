@@ -98,6 +98,10 @@ Run a function in the context of a database instance.
 
 ## Releases
 
+### 1.2.0
+
+The ``model.all`` method now returns a promise.
+
 ### 1.1.0
 
 The ``model.save`` method now returns a promise in all cases.
