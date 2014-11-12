@@ -56,6 +56,24 @@ test('create a validation', function (t) {
     });
 });
 
+test('create a validation - promise version', function (t) {
+    var db = makeDb();
+    db.define('band', {
+        validate: function (band) {
+            if (!band.name) {
+                return {name: 'Missing name'};
+            }
+            return undefined;
+        }
+    });
+    t.plan(2);
+    db.band.save({foo: 'bar'}).catch(function(err){
+        t.ok(err, 'err is truthy');
+        t.ok(err.name, 'err is an object with a name key');
+        db.destroy();
+    });
+});
+
 test('default id generator uses model name', function (t) {
     var db = makeDb();
     db.define('band');

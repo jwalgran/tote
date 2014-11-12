@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/jwalgran/tote",
   "dependencies": {
+    "lie": "^2.8.0",
     "lodash": "^2.4.1",
     "pouchdb": "^3.0.6",
     "slug": "^0.8.0"

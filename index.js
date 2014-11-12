@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var slug = require('slug');
+var Promise = require('lie');
 
 function id (o) {
     if (_.isObject(o)) {
@@ -26,15 +27,18 @@ function generateId(model, data) {
 }
 
 function save(db, model, data, cb) {
-    // TODO: Support promises
     if (!_.isObject(data)) {
         throw new Error("data must be an object");
     }
     var id = generateId(model, data),
         failures = model.validate(data);
     if (failures) {
-        cb(failures);
-        return;
+        if (_.isFunction(cb)) {
+            cb(failures);
+        }
+        return new Promise(function(resolve, reject){
+            reject(failures);
+        });
     }
     return db.put(data, id, cb);
 }
