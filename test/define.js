@@ -98,6 +98,22 @@ test('retrieve items', function(t) {
     });
 });
 
+test('retrieve items - promise version', function(t) {
+    t.plan(2);
+    var db = makeDb();
+    db.define('band');
+    db.band.save({name: 'Melvins'}).then(function (band) {
+        return db.band.all();
+    }).then(function (bands) {
+        t.ok(bands, 'bands is defined');
+        t.equal(bands.length, 1 , 'there is one band');
+        db.destroy();
+    }).catch(function (err) {
+        t.fail(err);
+        db.destroy();
+    });
+});
+
 test('specify id segment generator', function (t) {
     var db = makeDb();
     db.define('band', {

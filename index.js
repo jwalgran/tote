@@ -146,16 +146,25 @@ module.exports = {
             db[modelName] = db[modelName] || {};
             db[modelName].all = function(cb) {
                 var idPrefix = model.idPrefix || modelName;
-                db.allDocs({
-                    include_docs: true,
-                    startkey: idPrefix + '_',
-                    endkey: idPrefix + '_\uffff'
-                }, function(err, results) {
-                    if (err) {
-                        cb(err, null);
-                    } else {
-                        cb(null, _.pluck(results.rows, 'doc'));
-                    }
+                return new Promise(function (resolve, reject) {
+                    db.allDocs({
+                        include_docs: true,
+                        startkey: idPrefix + '_',
+                        endkey: idPrefix + '_\uffff'
+                    }, function(err, results) {
+                        if (err) {
+                            if (_.isFunction(cb)) {
+                                cb(err, null);
+                            }
+                            reject(err);
+                        } else {
+                            var docs = _.pluck(results.rows, 'doc');
+                            if (_.isFunction(cb)) {
+                                cb(null, docs);
+                            }
+                            resolve(docs);
+                        }
+                    });
                 });
             };
 
