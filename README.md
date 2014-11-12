@@ -95,3 +95,13 @@ Run a query on either the ``allDocs`` index or a custom view.
 ### db.modelName.actionName(arg1, arg2, ... argN)
 
 Run a function in the context of a database instance.
+
+## Releases
+
+### 1.1.0
+
+The ``model.save`` method now returns a promise in all cases.
+
+### 1.0.0
+
+Initial
